@@ -1,0 +1,49 @@
+require:
+  - rubocop-packaging
+  - rubocop-performance
+  - rubocop-rails
+  - rubocop-rspec
+
+AllCops:
+  TargetRubyVersion: 3.2.2
+  NewCops: enable
+  Exclude:
+    - "db/**/*"
+    - "bin/**/*"
+    - "vendor/**/*"
+    - "test/**/*"
+    - "tmp/**/*"
+    - "public/**/*"
+    - "coverage/**/*"
+    - "log/**/*"
+
+Metrics/MethodLength:
+  Exclude:
+    - "db/**/*.rb"
+
+Metrics/AbcSize:
+  Max: 17
+  Exclude:
+    - "db/**/*.rb"
+
+Metrics/BlockLength:
+  Max: 50
+
+Style/Documentation:
+  Exclude:
+    - "app/models/**/*.rb"
+    - "app/controllers/**/*.rb"
+    - "db/**/*.rb"
+
+Layout/LineLength:
+  Exclude:
+    - "config/initializers/devise.rb"
+
+RSpec/ContextWording:
+  Prefixes:
+    - quando
+    - com
+    - sem
+
+RSpec/MultipleExpectations:
+  Max: 4
