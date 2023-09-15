@@ -1,5 +1,5 @@
 development:
-  url: postgres://felipe:sidedoor10@localhost/parkflow_development
+  url: postgres://db:db@localhost/sidebank_development
 
 test:
-  url: postgres://felipe:sidedoor10@localhost/parkflow_test
+  url: postgres://db:db@localhost/sidebank_test
