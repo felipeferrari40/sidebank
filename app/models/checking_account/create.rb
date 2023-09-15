@@ -1,8 +1,9 @@
 module CheckingAccount
   class Create < ::Micro::Case
-    attribute :user_id, :ammount
+    attribute :user_id
+    attribute :amount
 
-    def call
+    def call!
       byebug
     end
   end

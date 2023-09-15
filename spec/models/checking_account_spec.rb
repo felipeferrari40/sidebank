@@ -10,29 +10,31 @@ RSpec.describe CheckingAccount::Create, type: :model do
         let(:amount) { 0 }
 
         it 'Retorna uma failure' do
-          result = described_class.call
+          result = described_class.call(user_id:, amount:)
 
           expect(result).to be_a_failure
         end
       end
+
       context 'Quando o usuário for invalido' do
         let(:user_id) { '****' }
         let(:amount) { 0 }
 
         it 'Retorna uma failure' do
-          result = described_class.call
+          result = described_class.call(user_id:, amount:)
 
           expect(result).to be_a_failure
         end
       end
     end
+
     describe 'success' do
       context 'Quando a criação for sucesso' do
         let(:user_id) { '1' }
         let(:amount) { 0 }
 
         it 'Retorna um sucesso' do
-          result = described_class.call
+          result = described_class.call(user_id:, amount:)
 
           expect(result).to be_a_success
         end
