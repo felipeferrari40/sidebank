@@ -1,5 +1,5 @@
 module CheckingAccount
-  class Deposit < ::Micro::Case
+  class Withdraw < ::Micro::Case
     attribute :checking_account_id
     attribute :value
 
@@ -9,9 +9,11 @@ module CheckingAccount
       return Failure result: { message: 'Valor deve ser maior do que zero' } if value.zero? || value.negative?
 
       checking_account = ::CheckingAccount::Record.find(checking_account_id)
-      checking_account.amount += value
 
-      return Failure result: { message: 'Não foi possível realizar o depósito' } unless checking_account.save
+      return Failure result: { message: 'Saldo insuficiente' } if checking_account.amount < value
+
+      checking_account.amount -= value
+      return Failure result: { message: 'Não foi possível realizar o saque' } unless checking_account.save
 
       Success result: { checking_account: }
     end

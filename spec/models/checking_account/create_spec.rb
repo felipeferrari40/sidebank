@@ -17,7 +17,8 @@ RSpec.describe CheckingAccount::Create, type: :use_case do
       end
 
       context 'Quando o usuário for invalido' do
-        let(:user_id) { '****' }
+        let!(:user) { build(:user) }
+        let(:user_id) { user.id }
         let(:amount) { 0 }
 
         it 'Retorna uma failure' do
@@ -30,7 +31,7 @@ RSpec.describe CheckingAccount::Create, type: :use_case do
 
     describe 'success' do
       context 'Quando a criação for sucesso' do
-        let(:user) { User.create(email: 'email@email.com', password: '123456789') }
+        let!(:user) { create(:user) }
         let(:user_id) { user.id }
         let(:amount) { 0 }
 
